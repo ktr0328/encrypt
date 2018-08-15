@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ca:
+    build: ./docker/ca
+    image: ktr0328/ca
+    volumes:
+      - './src/ca:/src/ca'
+      - './node_modules:/src/node_modules'
+    ports:
+      - '3000:3000'
