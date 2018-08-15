@@ -5,10 +5,16 @@
   "repository": "ssh://git@github.com/ktr0328/encrypt.git",
   "author": "ktr0328 <zf7heatpa@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "keypair": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^23.5.0"
   }
 }
