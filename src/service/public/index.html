@@ -20,6 +20,11 @@
       opacity: 0.3;
     }
 
+    textarea {
+      border-radius: 2px;
+      border: solid 1px #CCC;
+    }
+
     textarea:read-only {
       background-color: #CCCCCC
     }
@@ -53,7 +58,7 @@
   <p>ハンコを押すと、暗号化されたデータを入手できます。(ハンコが押された状態)</p>
   <div id='encrypt-col' class='half'>
     <form id='encrypt'>
-      <textarea name='data' id='fromRaw' cols='50' rows='10' placeholder="なんか適当なデータ (契約書的な)"></textarea>
+      <textarea id='fromRaw' cols='50' rows='10' placeholder="なんか適当なデータ (契約書的な)"></textarea>
       <input type='submit' value='ハンコを押す'>
     </form>
     <textarea id='encrypted' cols='50' rows='10' readonly></textarea>
@@ -62,35 +67,13 @@
   <hr>
 
   <h2>Step 3</h2>
-  <p>復号できることを確認します。</p>
+  <p>ハンコを使って復号できることを確認します。</p>
   <form id='decrypt'>
     <textarea id='toRaw' cols='50' rows='10' readonly></textarea>
     <input type='submit' value='復号'>
   </form>
 </body>
 
-<script>
-  const getPrivateKeyButton = document.querySelector('#getPrivateKey')
-  const privateKeyText = document.querySelector('#privateKey')
-
-  getPrivateKeyButton.addEventListener('submit', e => {
-    e.preventDefault()
-    const registerKey = document.querySelector('#registerKey').value
-    const payload = {
-      number: registerKey
-    }
-
-    fetch('http://localhost:3000', {
-        body: JSON.stringify(payload),
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-      }).then(res => res.json())
-      .then(res => {
-        privateKeyText.value = res.privateKey
-      })
-  })
-</script>
+<script src="/app.js"></script>
 
 </html>
