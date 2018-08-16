@@ -8,3 +8,11 @@ services:
       - './node_modules:/src/node_modules'
     ports:
       - '3000:3000'
+  service_server:
+    build: ./docker/service
+    image: ktr0328/service_server
+    volumes:
+      - './src/service:/src/service'
+      - './node_modules:/src/node_modules'
+    ports:
+      - '4000:4000'
